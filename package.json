@@ -17,6 +17,7 @@
         "vite": "^7.1.12"
     },
     "dependencies": {
+        "@heroicons/vue": "^2.2.0",
         "@inertiajs/vue3": "^2.2.15",
         "vue": "^3.5.22",
         "vue-toastification": "^2.0.0-rc.5"
