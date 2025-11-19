@@ -10,7 +10,7 @@
     @inertiaHead
 </head>
 
-<body>
+<body class="antialiased bg-gradient-to-b from-blue-50 to-blue-100">
     @inertia
 </body>
 
