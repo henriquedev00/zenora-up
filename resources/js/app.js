@@ -14,7 +14,7 @@ createInertiaApp({
     setup({ el, App, props, plugin }) {
         createApp({ render: () => h(App, props) })
             .use(plugin)
-            .use(Toast, { position: 'top-right', timeout: 3000 })
+            .use(Toast, { position: 'top-right', timeout: 5000 })
             .mount(el)
     },
 }).catch(error => {
