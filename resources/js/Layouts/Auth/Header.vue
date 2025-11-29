@@ -1,10 +1,13 @@
 <script setup>
+    import { usePage } from '@inertiajs/vue3';
     import { BellIcon, ChevronDownIcon } from '@heroicons/vue/24/outline';
     import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue';
 
+    const page = usePage();
+
     /* sample user */
     const user = {
-        name: 'Dra. Marcela Silva',
+        name: page.props.authenticatedUser?.name,
         role: 'Psicóloga',
         avatar: '/images/avatar.png'
     };
