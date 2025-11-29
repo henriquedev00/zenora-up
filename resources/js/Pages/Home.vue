@@ -1,9 +1,11 @@
 <script setup>
+    import App from '@/Layouts/Auth/App.vue';
 
+    defineOptions({ layout: App });
 </script>
 
 <template>
-    <div class="h-screen">
+    <div>
 
     </div>
 </template>
