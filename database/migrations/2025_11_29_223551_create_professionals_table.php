@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('professionals', function (Blueprint $table) {
             $table->id();
+            $table->string('title', 60);
             $table->string('professional_license', 30);
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
