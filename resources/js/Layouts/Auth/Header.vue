@@ -5,12 +5,14 @@
 
     const page = usePage();
 
-    /* sample user */
     const user = {
-        name: page.props.authenticatedUser?.name,
-        role: 'Psicóloga',
-        avatar: '/images/avatar.png'
+        name: page.props.authenticatedUser.name,
+        avatar: page.props.authenticatedUser.profile_image
     };
+
+    if (page.props.authenticatedUser.hasOwnProperty('professional')) {
+        user.title = page.props.authenticatedUser.professional.title
+    }
 </script>
 
 <template>
@@ -29,7 +31,7 @@
                     <div class="text-right leading-tight">
                         <div class="text-sm font-semibold text-gray-800">{{ user.name }}</div>
 
-                        <div class="text-xs text-gray-500">{{ user.role }}</div>
+                        <div v-if="user.title" class="text-xs text-gray-500">{{ user.title }}</div>
                     </div>
 
                     <MenuButton class="relative flex items-center focus:outline-none group">

@@ -13,7 +13,7 @@ class User extends Authenticatable
 
     protected $hidden = ['password'];
 
-    protected $fillable = ['full_name', 'email', 'password', 'administrator', 'active'];
+    protected $fillable = ['full_name', 'email', 'password', 'profile_image', 'administrator', 'active'];
 
     protected function casts(): array
     {

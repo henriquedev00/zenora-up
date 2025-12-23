@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Inertia\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -37,16 +38,18 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         if (Auth::check()) {
-            $user = Auth::user()->load('professional');
+            $user = Auth::user()->loadMissing('professional');
 
-            $authenticatedUser = cache()->remember(
-                'authenticated_user_' . Auth::id(),
-                now()->addMinutes(10),
-                fn () => [
-                    'name' => $user->name,
+            $authenticatedUser = [
+                'name' => $user->name,
+                'profile_image' => $user->profile_image ? Storage::url($user->profile_image) : Storage::url('profile_images/default.webp')
+            ];
+
+            if ($user->relationLoaded('professional')) {
+                $authenticatedUser['professional'] = [
                     'title' => $user->professional->title
-                ]
-            );
+                ];
+            }
         }
 
         return [...parent::share($request), 'authenticatedUser' => $authenticatedUser ?? null];
