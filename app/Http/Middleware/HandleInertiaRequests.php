@@ -37,9 +37,16 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         if (Auth::check()) {
-            $authenticatedUser = [
-                'name' => Auth::user()->name
-            ];
+            $user = Auth::user()->load('professional');
+
+            $authenticatedUser = cache()->remember(
+                'authenticated_user_' . Auth::id(),
+                now()->addMinutes(10),
+                fn () => [
+                    'name' => $user->name,
+                    'title' => $user->professional->title
+                ]
+            );
         }
 
         return [...parent::share($request), 'authenticatedUser' => $authenticatedUser ?? null];
