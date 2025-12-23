@@ -37,7 +37,7 @@
                     <MenuButton class="relative flex items-center focus:outline-none group">
                         <img :src="user.avatar" alt="avatar" class="w-10 h-10 rounded-full border cursor-pointer group-hover:ring-2 group-hover:ring-blue-400 transition">
 
-                        <ChevronDownIcon class="w-4 h-4 text-gray-500 ml-1" />
+                        <ChevronDownIcon class="size-4 text-gray-500 ml-1" />
                     </MenuButton>
                 </div>
 
