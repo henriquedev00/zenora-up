@@ -34,14 +34,14 @@
                 <div>
                     <label class="text-sm font-medium text-gray-700">E-mail</label>
 
-                    <input type="email" v-model="form.email" name="email" placeholder="seu@email.com" required class="w-full mt-1 px-4 py-3 rounded-xl border border-gray-300 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-blue-500 transition">
+                    <input type="email" v-model="form.email" name="email" placeholder="seu@email.com" required class="w-full mt-1 px-4 py-3 rounded-xl border border-gray-300 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-blue-500 focus-visible:outline-blue-500 transition">
                 </div>
 
                 <div>
                     <label class="text-sm font-medium text-gray-700">Senha</label>
 
                     <div class="relative">
-                        <input :type="showPassword ? 'text' : 'password'" v-model="form.password" name="password" placeholder="••••••••" required class="w-full mt-1 px-4 py-3 pr-12 rounded-xl border border-gray-300 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-blue-500 transition">
+                        <input :type="showPassword ? 'text' : 'password'" v-model="form.password" name="password" placeholder="••••••••" required class="w-full mt-1 px-4 py-3 pr-12 rounded-xl border border-gray-300 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-blue-500 focus-visible:outline-blue-500 transition">
 
                         <button type="button" @click="showPassword = !showPassword" class="absolute bottom-0 top-2 right-4 flex items-center text-gray-500 hover:text-gray-700" tabindex="-1">
                             <EyeIcon v-if="!showPassword" class="w-5 h-5" />
