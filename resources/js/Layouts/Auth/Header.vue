@@ -1,9 +1,11 @@
 <script setup>
     import { usePage } from '@inertiajs/vue3';
-    import { BellIcon, ChevronDownIcon } from '@heroicons/vue/24/outline';
     import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue';
+    import { BellIcon, ChevronDownIcon, Bars3Icon } from '@heroicons/vue/24/outline';
 
     const page = usePage();
+
+    const emit = defineEmits(['open-sidebar']);
 
     const user = {
         name: page.props.authenticatedUser.name,
@@ -16,10 +18,14 @@
 </script>
 
 <template>
-    <header class="fixed top-0 w-full h-16 bg-white px-3 sm:px-6 border-b flex items-center justify-end">
+    <header class="fixed top-0 w-full h-16 bg-white px-3 sm:px-6 border-b flex items-center justify-between lg:justify-end">
+        <button type="button" class="lg:hidden" @click="emit('open-sidebar')">
+            <Bars3Icon class="size-7 text-gray-600" />
+        </button>
+
         <div class="flex items-center gap-5">
             <button type="button" class="relative p-2 rounded-lg hover:bg-gray-100 transition focus:outline-none" aria-label="Notificações">
-                <BellIcon class="w-6 h-6 text-gray-600" />
+                <BellIcon class="size-6 text-gray-600" />
 
                 <span v-if="true" class="absolute -top-0.5 -right-0.5 bg-red-600 text-white text-[10px] px-1 py-[1px] rounded-full leading-none font-semibold">
                     2
