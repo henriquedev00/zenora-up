@@ -1,5 +1,5 @@
 <script setup>
-    import { usePage } from '@inertiajs/vue3';
+    import { usePage, Link } from '@inertiajs/vue3';
     import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue';
     import { BellIcon, ChevronDownIcon, Bars3Icon } from '@heroicons/vue/24/outline';
 
@@ -70,13 +70,16 @@
                         </MenuItem>
 
                         <MenuItem v-slot="{ active }">
-                            <a
+                            <Link
+                                as="button"
+                                method="post"
+                                type="button"
                                 href="/logout"
-                                class="block px-4 py-2 text-sm text-red-600 rounded-b-lg transition"
                                 :class="active ? 'bg-gray-100' : ''"
+                                class="w-full text-left px-4 py-2 text-sm text-red-600 rounded-b-lg transition"
                             >
                                 Sair
-                            </a>
+                            </Link>
                         </MenuItem>
                     </MenuItems>
                 </transition>

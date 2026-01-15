@@ -33,4 +33,15 @@ class AuthController extends Controller
 
         return back()->withErrors(['message' => 'As credenciais fornecidas não correspondem aos nossos registros.']);
     }
+
+    public function logout(Request $request)
+    {
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/login');
+    }
 }

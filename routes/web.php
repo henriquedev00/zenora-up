@@ -11,5 +11,7 @@ Route::middleware('guest:sanctum')->group(function () {
 });
 
 Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout']);
+
     Route::get('/', [HomeController::class, 'index']);
 });
