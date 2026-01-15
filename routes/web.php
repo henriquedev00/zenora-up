@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 
 Route::middleware('guest:sanctum')->group(function () {
     Route::get('/login', [AuthController::class, 'login']);
@@ -12,6 +13,8 @@ Route::middleware('guest:sanctum')->group(function () {
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
+
+    Route::get('/profile', [ProfileController::class, 'index']);
 
     Route::get('/', [HomeController::class, 'index']);
 
