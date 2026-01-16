@@ -21,7 +21,7 @@
 </script>
 
 <template>
-    <aside class="hidden w-64 lg:fixed lg:inset-y-0 lg:left-0 lg:flex lg:flex-col">
+    <aside class="hidden w-64 lg:fixed lg:z-20 lg:inset-y-0 lg:left-0 lg:flex lg:flex-col">
         <div class="flex grow flex-col gap-y-5 overflow-y-auto border-r bg-white pb-6">
             <div class="h-16 flex items-center gap-3 border-b px-6">
                 <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-blue-400 flex items-center justify-center text-white font-bold">ZU</div>
@@ -149,7 +149,7 @@
                 <div class="fixed inset-0 bg-black/30" aria-hidden="true" />
             </TransitionChild>
 
-            <div class="fixed inset-0 flex">
+            <div class="fixed inset-0 flex z-20">
                 <TransitionChild
                     as="template"
                     leave="duration-200 ease-in"

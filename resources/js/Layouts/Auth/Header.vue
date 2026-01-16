@@ -18,7 +18,7 @@
 </script>
 
 <template>
-    <header class="fixed top-0 w-full h-16 bg-white px-3 sm:px-6 border-b flex items-center justify-between lg:justify-end">
+    <header class="fixed z-10 top-0 w-full h-16 bg-white px-3 sm:px-6 border-b flex items-center justify-between lg:justify-end">
         <button type="button" class="lg:hidden" @click="emit('open-sidebar')">
             <Bars3Icon class="size-7 text-gray-600" />
         </button>
