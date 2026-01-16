@@ -23,7 +23,7 @@
 <template>
     <aside class="hidden w-64 lg:fixed lg:inset-y-0 lg:left-0 lg:flex lg:flex-col">
         <div class="flex grow flex-col gap-y-5 overflow-y-auto border-r bg-white pb-6">
-            <div class="h-16 flex items-center gap-3 border-b -mx-6 px-12">
+            <div class="h-16 flex items-center gap-3 border-b px-6">
                 <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-blue-400 flex items-center justify-center text-white font-bold">ZU</div>
 
                 <div class="leading-tight font-semibold text-gray-800">Zenora Up</div>
@@ -161,7 +161,7 @@
                 >
                     <DialogPanel class="relative flex max-w-80 flex-1 bg-white shadow-xl">
                         <div class="flex grow flex-col gap-y-5 overflow-y-auto border-r bg-white pb-6">
-                            <div class="h-16 flex items-center justify-between border-b -mx-6 px-12">
+                            <div class="h-16 flex items-center justify-between border-b px-6">
                                 <div class="flex items-center gap-3">
                                     <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-blue-400 flex items-center justify-center text-white font-bold">ZU</div>
 
