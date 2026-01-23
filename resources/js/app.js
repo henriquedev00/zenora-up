@@ -1,9 +1,15 @@
 import '@/bootstrap';
 import '@/../css/app.css';
 import { createApp, h } from 'vue';
-import Toast from 'vue-toastification';
 import 'vue-toastification/dist/index.css';
-import { createInertiaApp } from '@inertiajs/vue3';
+import Toast, { useToast } from 'vue-toastification';
+import { createInertiaApp, router } from '@inertiajs/vue3';
+
+const toast = useToast();
+
+router.on('start', () => {
+    toast.clear();
+});
 
 createInertiaApp({
     resolve: name => {
@@ -16,7 +22,7 @@ createInertiaApp({
             .use(plugin)
             .use(Toast, { position: 'top-right', timeout: 5000 })
             .mount(el);
-    },
+    }
 }).catch(error => {
     console.error('Error initializing Inertia:', error);
 });
