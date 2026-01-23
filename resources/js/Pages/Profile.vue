@@ -4,12 +4,12 @@
     import { useForm } from '@inertiajs/vue3';
     import { useToast } from 'vue-toastification';
     import { LockClosedIcon } from '@heroicons/vue/24/outline';
-    import {EyeIcon, EyeSlashIcon, PencilSquareIcon, XMarkIcon } from '@heroicons/vue/24/outline/index.js';
+    import {EyeIcon, EyeSlashIcon, PencilSquareIcon } from '@heroicons/vue/24/outline/index.js';
 
     defineOptions({ layout: App });
 
     const props = defineProps({
-        authenticatedUser: {
+        userData: {
             type: Object,
             required: true
         }
@@ -19,17 +19,17 @@
 
     const showNewPassword = ref(false);
 
-    const isProfessional = computed(() => props.authenticatedUser.hasOwnProperty('professional'));
+    const isProfessional = computed(() => props.userData.hasOwnProperty('professional'));
 
     const form1 = useForm({
-        email: props.authenticatedUser.email,
-        full_name: props.authenticatedUser.full_name
+        email: props.userData.email,
+        full_name: props.userData.full_name
     });
 
     if (isProfessional.value) {
         form1.professional = {
-            title: props.authenticatedUser.professional.title,
-            professional_license: props.authenticatedUser.professional.professional_license
+            title: props.userData.professional.title,
+            professional_license: props.userData.professional.professional_license
         }
     }
 
@@ -65,7 +65,7 @@
                 <form method="POST" @submit.prevent="" class="flex flex-col items-center sm:flex-row sm:items-start gap-6">
                     <div class="relative">
                         <label for="file_input" class="group w-24 h-24 rounded-full bg-gray-100 overflow-hidden border flex items-center justify-center hover:cursor-pointer focus:ring-2 focus:ring-blue-400">
-                            <img :src="authenticatedUser.profile_image">
+                            <img :src="userData.profile_image">
 
                             <input type="file" id="file_input" accept="image/*" class="hidden">
 

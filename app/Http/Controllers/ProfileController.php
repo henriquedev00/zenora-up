@@ -13,19 +13,19 @@ class ProfileController extends Controller
     {
         $user = Auth::user()->loadMissing('professional');
 
-        $authenticatedUser = [
+        $userData = [
             'email' => $user->email,
             'full_name' => $user->full_name,
             'profile_image' => $user->profile_image ? Storage::url($user->profile_image) : Storage::url('profile_images/default.webp')
         ];
 
         if ($user->relationLoaded('professional')) {
-            $authenticatedUser['professional'] = [
+            $userData['professional'] = [
                 'title' => $user->professional->title,
                 'professional_license' => $user->professional->professional_license
             ];
         }
 
-        return Inertia::render('Profile', ['authenticatedUser' => $authenticatedUser]);
+        return Inertia::render('Profile', ['userData' => $userData]);
     }
 }
