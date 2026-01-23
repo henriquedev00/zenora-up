@@ -12,10 +12,10 @@
 
     function authenticate() {
         form.post('/authenticate', {
-            onError: () => {
+            onError: (errors) => {
                 form.reset('password');
 
-                toast.warning(form.errors.message ?? 'As credenciais fornecidas não correspondem aos nossos registros.');
+                toast.warning(errors[0] ?? 'As credenciais fornecidas não correspondem aos nossos registros.');
             }
         });
     }

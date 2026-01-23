@@ -31,7 +31,7 @@ class AuthController extends Controller
             return redirect()->intended();
         }
 
-        return back()->withErrors(['message' => 'As credenciais fornecidas não correspondem aos nossos registros.']);
+        return back()->withErrors('As credenciais fornecidas não correspondem aos nossos registros.');
     }
 
     public function logout(Request $request)
