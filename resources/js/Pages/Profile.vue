@@ -2,6 +2,7 @@
     import { computed, ref } from 'vue';
     import App from '@/Layouts/Auth/App.vue';
     import { useForm } from '@inertiajs/vue3';
+    import { useToast } from 'vue-toastification';
     import { LockClosedIcon } from '@heroicons/vue/24/outline';
     import {EyeIcon, EyeSlashIcon} from '@heroicons/vue/24/outline/index.js';
 
@@ -14,7 +15,9 @@
         }
     });
 
-    const showPassword = ref(false);
+    const toast = useToast();
+
+    const showNewPassword = ref(false);
 
     const isProfessional = computed(() => props.authenticatedUser.hasOwnProperty('professional'));
 
@@ -32,8 +35,21 @@
 
     const form2 = useForm({
         new_password: '',
-        confirm_new_password: ''
+        new_password_confirmation: ''
     });
+
+    function updatePassword() {
+        form2.patch('update-password', {
+            onError: (errors) => {
+                toast.warning(errors.new_password);
+            },
+            onSuccess: () => {
+                form2.reset('new_password', 'new_password_confirmation');
+
+                toast.success('Senha atualizada com sucesso.');
+            }
+        });
+    }
 </script>
 
 <template>
@@ -100,16 +116,16 @@
 
                 <p class="text-sm sm:text-base text-gray-500 mt-1">Defina uma nova senha.</p>
 
-                <form method="POST" @submit.prevent="" class="mt-4 flex flex-col">
+                <form method="POST" @submit.prevent="updatePassword()" class="mt-4 flex flex-col">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 flex-1">
                         <div>
                             <label class="text-sm font-medium text-gray-700">Nova senha</label>
 
                             <div class="relative">
-                                <input :type="showPassword ? 'text' : 'password'" v-model="form2.new_password" placeholder="••••••••" required class="w-full mt-1 px-4 py-3 pr-12 rounded-xl border border-gray-300 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-blue-500 focus-visible:outline-blue-500 transition">
+                                <input :type="showNewPassword ? 'text' : 'password'" v-model="form2.new_password" placeholder="••••••••" required class="w-full mt-1 px-4 py-3 pr-12 rounded-xl border border-gray-300 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-blue-500 focus-visible:outline-blue-500 transition">
 
-                                <button type="button" @click="showPassword = !showPassword" class="absolute bottom-0 top-2 right-4 flex items-center text-gray-500 hover:text-gray-700" tabindex="-1">
-                                    <EyeIcon v-if="!showPassword" class="w-5 h-5" />
+                                <button type="button" @click="showNewPassword = !showNewPassword" class="absolute bottom-0 top-2 right-4 flex items-center text-gray-500 hover:text-gray-700" tabindex="-1">
+                                    <EyeIcon v-if="!showNewPassword" class="w-5 h-5" />
 
                                     <EyeSlashIcon v-else class="w-5 h-5" />
                                 </button>
@@ -120,10 +136,10 @@
                             <label class="text-sm font-medium text-gray-700">Confirmar nova senha</label>
 
                             <div class="relative">
-                                <input :type="showPassword ? 'text' : 'password'" v-model="form2.confirm_new_password" placeholder="••••••••" required class="w-full mt-1 px-4 py-3 pr-12 rounded-xl border border-gray-300 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-blue-500 focus-visible:outline-blue-500 transition">
+                                <input :type="showNewPassword ? 'text' : 'password'" v-model="form2.new_password_confirmation" placeholder="••••••••" required class="w-full mt-1 px-4 py-3 pr-12 rounded-xl border border-gray-300 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-blue-500 focus-visible:outline-blue-500 transition">
 
-                                <button type="button" @click="showPassword = !showPassword" class="absolute bottom-0 top-2 right-4 flex items-center text-gray-500 hover:text-gray-700" tabindex="-1">
-                                    <EyeIcon v-if="!showPassword" class="w-5 h-5" />
+                                <button type="button" @click="showNewPassword = !showNewPassword" class="absolute bottom-0 top-2 right-4 flex items-center text-gray-500 hover:text-gray-700" tabindex="-1">
+                                    <EyeIcon v-if="!showNewPassword" class="w-5 h-5" />
 
                                     <EyeSlashIcon v-else class="w-5 h-5" />
                                 </button>
@@ -133,7 +149,7 @@
 
                     <div class="mt-6 flex items-center justify-end">
                         <button :disabled="form2.processing" class="px-4 py-3 mt-4 bg-blue-600 text-white rounded-xl font-semibold shadow-md hover:bg-blue-700 transition" :class="form2.processing ? 'opacity-70 cursor-not-allowed' : ''">
-                            {{ form2.processing ? 'Salvando…' : 'Atualizar senha' }}
+                            {{ form2.processing ? 'Atualizando…' : 'Atualizar senha' }}
                         </button>
                     </div>
                 </form>
