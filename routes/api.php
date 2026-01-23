@@ -7,7 +7,7 @@ Route::get('/user', function (Request $request) {
     $user = $request->user();
 
     return response()->json([
-        'name' => $user->name,
+        'name' => $user->full_name,
         'email' => $user->email
     ]);
 })->middleware('auth:sanctum');

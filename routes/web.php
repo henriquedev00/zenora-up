@@ -5,13 +5,13 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 
-Route::middleware('guest:sanctum')->group(function () {
+Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'login']);
 
     Route::post('/authenticate', [AuthController::class, 'authenticate']);
 });
 
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 
     Route::get('/profile', [ProfileController::class, 'index']);
