@@ -60,16 +60,6 @@
                             </Link>
                         </MenuItem>
 
-                        <MenuItem v-slot="{ active }">
-                            <a
-                                href="/account/settings"
-                                class="block px-4 py-2 text-sm transition"
-                                :class="active ? 'bg-gray-100 text-gray-800' : 'text-gray-700'"
-                            >
-                                Configurações
-                            </a>
-                        </MenuItem>
-
                         <MenuItem v-slot="{ active, close }">
                             <Link
                                 as="button"

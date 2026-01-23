@@ -64,7 +64,7 @@
             <div class="bg-white rounded-lg shadow-md border border-gray-100 p-4 sm:p-6">
                 <form method="POST" @submit.prevent="" class="flex flex-col items-center sm:flex-row sm:items-start gap-6">
                     <div class="relative">
-                        <label for="file_input" class="w-24 h-24 rounded-full bg-gray-100 overflow-hidden border flex items-center justify-center">
+                        <label for="file_input" class="w-24 h-24 rounded-full bg-gray-100 overflow-hidden border flex items-center justify-center hover:cursor-pointer">
                             <img :src="authenticatedUser.profile_image">
 
                             <input type="file" id="file_input" accept="image/*" class="hidden">
@@ -94,13 +94,13 @@
                             <div v-if="isProfessional">
                                 <label class="text-sm md:text-base lg:text-lg font-medium text-gray-700">Licença profissional</label>
 
-                                <input type="text" v-model="form1.professional.professional_license" placeholder="Ex.: CRM 123456/SP" required class="w-full mt-1 px-4 py-3 rounded-xl border border-gray-300 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-blue-500 focus-visible:outline-blue-500 transition">
+                                <input type="text" v-model="form1.professional.professional_license" placeholder="Ex.: CRM 123456/SP" required class="w-full mt-1 px-4 py-3 rounded-xl border border-gray-300 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-blue-500 focus-visible:outline-blue-500 transition" disabled>
                             </div>
                         </div>
 
                         <div class="mt-6 flex items-center justify-end">
                             <button :disabled="form1.processing" class="px-4 py-3 mt-4 bg-blue-600 text-white rounded-xl font-semibold shadow-md hover:bg-blue-700 transition" :class="form1.processing ? 'opacity-70 cursor-not-allowed' : ''">
-                                {{ form1.processing ? 'Salvando…' : 'Salvar alterações' }}
+                                {{ form1.processing ? 'Atualizar…' : 'Atualizar dados' }}
                             </button>
                         </div>
                     </div>
