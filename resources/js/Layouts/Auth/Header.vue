@@ -15,8 +15,6 @@
     if (page.props.authenticatedUser.hasOwnProperty('professional')) {
         user.title = page.props.authenticatedUser.professional.title
     }
-
-    console.log(page.props);
 </script>
 
 <template>

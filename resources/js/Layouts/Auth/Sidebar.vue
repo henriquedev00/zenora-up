@@ -178,6 +178,7 @@
                                     <li>
                                         <Link
                                             href="/"
+                                            :onBefore="() => { emit('close'); }"
                                             class="group relative flex items-center gap-3 rounded-lg px-3 py-1.5 text-sm font-medium transition-all"
                                             :class="isActivePath('/') ? 'bg-blue-50 text-blue-700 shadow-sm ring-1 ring-blue-100' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'"
                                         >
