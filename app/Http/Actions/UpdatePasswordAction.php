@@ -4,7 +4,6 @@ namespace App\Http\Actions;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class UpdatePasswordAction
 {
@@ -16,7 +15,7 @@ class UpdatePasswordAction
 
         $user = Auth::user();
 
-        $user->update(['password' => Hash::make($data['new_password'])]);
+        $user->update(['password' => $data['new_password']]);
 
         return back();
     }

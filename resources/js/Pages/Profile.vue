@@ -4,7 +4,7 @@
     import { useForm } from '@inertiajs/vue3';
     import { useToast } from 'vue-toastification';
     import { LockClosedIcon } from '@heroicons/vue/24/outline';
-    import {EyeIcon, EyeSlashIcon} from '@heroicons/vue/24/outline/index.js';
+    import {EyeIcon, EyeSlashIcon, PencilSquareIcon, XMarkIcon } from '@heroicons/vue/24/outline/index.js';
 
     defineOptions({ layout: App });
 
@@ -64,10 +64,16 @@
             <div class="bg-white rounded-lg shadow-md border border-gray-100 p-4 sm:p-6">
                 <form method="POST" @submit.prevent="" class="flex flex-col items-center sm:flex-row sm:items-start gap-6">
                     <div class="relative">
-                        <label for="file_input" class="w-24 h-24 rounded-full bg-gray-100 overflow-hidden border flex items-center justify-center hover:cursor-pointer">
+                        <label for="file_input" class="group w-24 h-24 rounded-full bg-gray-100 overflow-hidden border flex items-center justify-center hover:cursor-pointer focus:ring-2 focus:ring-blue-400">
                             <img :src="authenticatedUser.profile_image">
 
                             <input type="file" id="file_input" accept="image/*" class="hidden">
+
+                            <div class="absolute inset-0 rounded-full bg-black/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                                <div class="inline-flex items-center gap-2 text-white text-sm font-medium">
+                                    <PencilSquareIcon class="w-5 h-5" />
+                                </div>
+                            </div>
                         </label>
                     </div>
 
@@ -95,6 +101,8 @@
                                 <label class="text-sm md:text-base lg:text-lg font-medium text-gray-700">Licença profissional</label>
 
                                 <input type="text" v-model="form1.professional.professional_license" placeholder="Ex.: CRM 123456/SP" required class="w-full mt-1 px-4 py-3 rounded-xl border border-gray-300 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-blue-500 focus-visible:outline-blue-500 transition" disabled>
+
+                                <p class="text-xs text-gray-500 mt-1">Este campo não pode ser editado.</p>
                             </div>
                         </div>
 

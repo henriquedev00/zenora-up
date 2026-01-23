@@ -7,9 +7,11 @@ import { createInertiaApp, router } from '@inertiajs/vue3';
 
 const toast = useToast();
 
-router.on('start', () => {
-    toast.clear();
-});
+if (!window.__inertia_toast_bound__) {
+    window.__inertia_toast_bound__ = true;
+
+    router.on('start', () => toast.clear());
+}
 
 createInertiaApp({
     resolve: name => {
